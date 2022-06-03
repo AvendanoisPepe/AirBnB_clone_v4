@@ -1,13 +1,17 @@
 const burbujita = function () {
-    console.log("hugo");
-    $.getJSON("http://172.20.244.135:5001/api/v1/status/", (data) => {
-        if (data.status === "OK") {
-            console.log(data.status);
-            $("div#api_status").addClass("available");
-        } else {
-            $("div#api_status").removeClass("available");
+    var cabecera = document.getElementById('api_status');
+    fetch("http://172.20.244.135:5001/api/v1/status/").then(
+        data => { return data.json() }
+    ).then(
+        pedro => {
+            console.log(pedro.status);
+            if (pedro.status === "OK") {
+                cabecera.classList.add('available');
+            } else {
+                cabecera.classList.remove('available');
+            }
         }
-    });
+    )
 };
 
 const servicios = function () {
@@ -34,8 +38,23 @@ const servicios = function () {
         $('.amenities h4').html("&nbsp;");
   });
 }
+const servicios1 = function () {
+    const listados = {};
+    let eliminar = [];
 
-$(() => {
-    servicios();
-    burbujita();
-});
+    let pepe = document.getElementById("hugo");
+    let mie = document.querySelectorAll(".miedo");
+    let ap = document.getElementById("mk")
+    
+        pepe.addEventListener("change", function () {
+        mie.forEach((e) => {
+        if (e.checked == true) {
+            console.log(mie[9].attributes[2]);
+            //let hee = document.createElement('p');
+            //hee.innerHTML = e
+        }
+        })
+    })
+}
+servicios1();
+burbujita();
