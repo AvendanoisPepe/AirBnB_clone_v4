@@ -1,6 +1,6 @@
 const burbujita = function () {
     var cabecera = document.getElementById('api_status');
-    fetch("http://172.20.244.135:5001/api/v1/status/").then(
+    fetch("http://172.20.252.43:5001/api/v1/status/").then(
         data => { return data.json() }
     ).then(
         pedro => {
